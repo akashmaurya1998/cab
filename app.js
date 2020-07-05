@@ -50,7 +50,8 @@ app.route('/check').post(function(req, res){
 });
 
 // ///////////////////////////////////////////////Port/////////////////////////////
-const port = process.env.PORT;
-app.listen(port || 3000, function(req, res){
+
+const port = process.env.PORT || 3000;
+app.listen(port, function(req, res){
   console.log("server started at 3000");
 });
