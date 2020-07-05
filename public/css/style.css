@@ -1,0 +1,19 @@
+.b-nav{
+  max-height: 400px;
+  background-image: url("https://picsum.photos/1920/1080");
+  height: 600px;
+}
+
+.form{
+  margin: 5px 0 5px 0;
+  border-radius: 5px;
+}
+
+.my_loc_ic{
+  text-decoration: none;
+  color: inherit;
+}
+
+#floc{
+  z-index: 100; 
+}
