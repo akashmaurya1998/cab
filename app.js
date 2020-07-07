@@ -18,18 +18,18 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine','ejs');
 
 var gmAPI = new GoogleMapsAPI(publicConfig);
-
-var formattedAddress="";
 // ////////////////////////////////////////////ROUTES////////////////////////////////////
 
 app.route('/').get(function(req, res){
-  console.log(formattedAddress);
-  res.render('index', {formatted_Address: formattedAddress});
+  res.render('index');
 })
 .post(function(req, res){
 
+});
+
+app.route('/currentlocation/:lat/:lon').get(function(req, res){
   var reverseGeocodeParams = {
-  "latlng":        req.body.latitude +","+ req.body.longitude,
+  "latlng":        req.params.lat +","+ req.params.lon,
   "result_type":   "street_address",
   "language":      "en",
   "location_type": "ROOFTOP"
@@ -39,14 +39,9 @@ gmAPI.reverseGeocode(reverseGeocodeParams, function(err, result){
     if (err) {
       console.log(err);
     } else {
-      formattedAddress = JSON.stringify(result.results[0].formatted_address);
+      res.render('currentlocation', {position: JSON.stringify(result.results[0].formatted_address)});
     }
-    res.redirect(req.originUrl);
   });
-});
-
-app.route('/check').post(function(req, res){
-  res.send("done");
 });
 
 // ///////////////////////////////////////////////Port/////////////////////////////
