@@ -1,6 +1,6 @@
 require('dotenv').config();
 ////////////////////////////////////////////// Modules////////////////////////////////////
-import alert from 'alert';
+// import alert from 'alert';
 const express = require('express');
 const bodyParser = require('body-parser');
 const https = require ('https');
@@ -42,7 +42,6 @@ gmAPI.reverseGeocode(reverseGeocodeParams, function(err, result){
     } else if(result.status === "OK"){
             res.render('currentlocation', {position: JSON.stringify(result.results[0].formatted_address)});
     } else {
-        alert("Cant recognize location");
        res.redirect('/'); 
     }
   });
