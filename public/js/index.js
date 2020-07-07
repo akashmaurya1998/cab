@@ -7,15 +7,14 @@ $(document).ready(function(){
             navigator.geolocation.getCurrentPosition(function(position) {
             let lon = position.coords.longitude;
             let lat = position.coords.latitude;
-                   
+            $('#floc').attr('href', '/currentlocation/'+lat+'/'+lon);  
+              
             });
       } else {
         alert("geolocation not support");
 
       }
   });
-$('#floc').attr('href', '/currentlocation/'+lat+'/'+lon);  
-
 // $('.b-nav').load(function(){
 //   M.updateTextFields();
 // });
