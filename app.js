@@ -38,9 +38,8 @@ app.route('/currentlocation/:lat/:lon').get(function(req, res){
 gmAPI.reverseGeocode(reverseGeocodeParams, function(err, result){
     if (err) {
       res.render('error')
-    } else {
+    } 
       res.render('currentlocation', {position: JSON.stringify(result.results[0].formatted_address)});
-    }
   });
 });
 
