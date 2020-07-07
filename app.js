@@ -39,7 +39,8 @@ gmAPI.reverseGeocode(reverseGeocodeParams, function(err, result){
     if (err) {
       res.render('error')
     } 
-      res.render('currentlocation', {position: JSON.stringify(result.results[0].formatted_address)});
+        res.send(result);
+      // res.render('currentlocation', {position: JSON.stringify(result.results[0].formatted_address)});
   });
 });
 
