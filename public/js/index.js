@@ -10,7 +10,7 @@ if(navigator.geolocation) {
               var lon = position.coords.longitude;
               var lat = position.coords.latitude;
               $('#floc').attr('href', '/currentlocation/'+lat+'/'+lon);
-              alert(lon+"&"+lat);
+              
           });
       } else {
         alert("geolocation not support");
