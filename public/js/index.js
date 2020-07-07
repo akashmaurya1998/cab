@@ -1,5 +1,3 @@
-var lon;
-var lat;
 $(document).ready(function(){
     $('.sidenav').sidenav();
     $('.datepicker').datepicker();
@@ -7,15 +5,16 @@ $(document).ready(function(){
 
     if(navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(function(position) {
-              lon = position.coords.longitude;
-              lat = position.coords.latitude;
-               ('#floc').attr('href', '/currentlocation/'+lat+'/'+lon);         
+            let lon = position.coords.longitude;
+            let lat = position.coords.latitude;
+                   
             });
       } else {
         alert("geolocation not support");
 
       }
   });
+$('#floc').attr('href', '/currentlocation/'+lat+'/'+lon);  
 
 // $('.b-nav').load(function(){
 //   M.updateTextFields();
