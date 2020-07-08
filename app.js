@@ -31,9 +31,9 @@ app.route('/').get(function(req, res){
 app.route('/currentlocation/:lat/:lon').get(function(req, res){
   var reverseGeocodeParams = {
   "latlng":        req.params.lat +","+ req.params.lon,
-  "result_type":   "street_address",
+  "result_type":   "route",
   "language":      "en",
-  "location_type": "ROOFTOP"
+  //"location_type": "ROOFTOP"
 };
 
 gmAPI.reverseGeocode(reverseGeocodeParams, function(err, result){
