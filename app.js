@@ -37,9 +37,22 @@ app.route('/currentlocation/:lat/:lon').get(function(req, res){
 
 gmAPI.reverseGeocode(reverseGeocodeParams, function(err, result){
     if (err) {
-      res.send(err);
-    }
+      res.render('error')
+    } else if(result.status === "ZERO_RESULTS"){
+        var reverseGeocodeParams2 = {
+          "latlng":        req.params.lat +","+ req.params.lon,
+          "result_type":   "street_address",
+          "language":      "en",
+          //"location_type": "ROOFTOP"
+        };
+
+        gmAPI.reverseGeocode(reverseGeocodeParams2, function(err, result2){
+          res.render('currentlocation', {position: JSON.stringify(result2.results[0].formatted_address)});
+        });
+    } else if(re.status === "OK"){
       res.render('currentlocation', {position: JSON.stringify(result.results[0].formatted_address)});
+    }
+
   });
 });
 
